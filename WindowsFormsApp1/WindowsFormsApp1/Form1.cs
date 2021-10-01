@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             label1.Text = Resource1.LastName;
-            label2.Text = Resource1.Firtsname;
+            label2.Text = Resource1.Utónév;
             button1.Text = Resource1.Add;
 
             listBox1.DataSource = users;
