@@ -72,6 +72,15 @@ namespace WindowsFormsApp1 {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        internal static string Fájlba_írás {
+            get {
+                return ResourceManager.GetString("Fájlba írás", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         internal static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
