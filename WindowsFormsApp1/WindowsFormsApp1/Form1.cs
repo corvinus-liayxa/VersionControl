@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,9 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            label1.Text = Resource1.LastName;
-            label2.Text = Resource1.Utónév;
+            label1.Text = Resource1.FullName;
             button1.Text = Resource1.Add;
+            button2.Text = Resource1.Fájlba_írás;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -30,10 +31,24 @@ namespace WindowsFormsApp1
         {
             var u = new User();
             {
-                u.LastName = textBox1.Text;
-                u.FirstName = textBox2.Text;
+                u.FullName = textBox1.Text;
+                //u.FirstName = textBox2.Text;
             };
             users.Add(u);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text (*.txt)|*.txt";
+            saveFileDialog.ShowDialog();
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                using (var sw = new StreamWriter(saveFileDialog.FileName, false))
+                    foreach (var item in listBox1.Items)
+                        sw.Write(item.ToString() + Environment.NewLine);
+                MessageBox.Show("Success");
+            }
         }
     }
 }

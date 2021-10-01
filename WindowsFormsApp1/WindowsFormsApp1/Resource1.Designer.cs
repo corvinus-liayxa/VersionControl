@@ -72,18 +72,18 @@ namespace WindowsFormsApp1 {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string LastName {
+        internal static string Fájlba_írás {
             get {
-                return ResourceManager.GetString("LastName", resourceCulture);
+                return ResourceManager.GetString("Fájlba írás", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Utónév {
+        internal static string FullName {
             get {
-                return ResourceManager.GetString("Utónév", resourceCulture);
+                return ResourceManager.GetString("FullName", resourceCulture);
             }
         }
     }
