@@ -120,10 +120,7 @@
   <data name="Add" xml:space="preserve">
     <value />
   </data>
-  <data name="Firtsname" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LastName" xml:space="preserve">
+  <data name="FullName" xml:space="preserve">
     <value />
   </data>
 </root>
