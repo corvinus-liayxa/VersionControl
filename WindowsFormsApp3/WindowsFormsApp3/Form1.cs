@@ -18,12 +18,14 @@ namespace WindowsFormsApp3
     {
         //BindingList<RateData> Rates = new BindingList<RateData>();
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
             RefreshData();
             fgv1();
+            //fgv2();
         }
 
         public void RefreshData()
@@ -52,6 +54,8 @@ namespace WindowsFormsApp3
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
@@ -78,6 +82,24 @@ namespace WindowsFormsApp3
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
+        }
+
+        public void fgv2()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetExchangeRatesRequestBody();
+
+            var response = mnbService.GetExchangeRates(request);
+            var result = response.GetExchangeRatesResult;
+
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+            foreach (XmlElement item in xml.DocumentElement.ChildNodes[0])
+            {
+                string NewItem = item.InnerText;
+                Currencies.Add(NewItem);
+            }
+
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
