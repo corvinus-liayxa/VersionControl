@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnitTestExample.Controllers;
@@ -36,6 +37,16 @@ namespace UnitTestExample
             PasswordCheckPassed = true;
             dgwAccounts.DataSource = _controller.AccountManager.Accounts;         
         }
+        
+         private bool RUBBERDUCK(string password)
+        {
+            var egy = new Regex(@"[a-z]+");
+            var ketto = new Regex(@"[A-Z]+");
+            var harom = new Regex(@"[0-9]+");
+            var negy = new Regex("[.{8,}]+");
+
+            return egy.IsMatch(password) && ketto.IsMatch(password) && harom.IsMatch(password) && negy.IsMatch(password);
+        }
 
         private void OnPasswordTextChanged(object sender, EventArgs e)
         {
@@ -54,6 +65,10 @@ namespace UnitTestExample
             {
                 MessageBox.Show(ex.Message);
             }
+
+
         }
+
+       
     }
 }
