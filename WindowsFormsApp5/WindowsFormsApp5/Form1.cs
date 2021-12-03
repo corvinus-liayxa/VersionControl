@@ -27,8 +27,6 @@ namespace WindowsFormsApp5
             Population = GetPeople(@"C:\Temp\nép.csv");
             BirthProbabilities = szuletes(@"C:\Temp\születés.csv");
             DeathProbabilities = halal(@"C:\Temp\halál.csv");
-
-            Similation();
         }
 
         private void Similation()
@@ -139,6 +137,16 @@ namespace WindowsFormsApp5
                 }
             }
             return deathProbabilities;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Similation();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
